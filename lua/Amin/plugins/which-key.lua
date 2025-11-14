@@ -259,6 +259,9 @@ return {
 			{ "<leader>cs", "<cmd>Lspsaga show_cursor_diagnostics<cr>", desc = "Lsp Cursor Diagnostics", mode = "n" },
 			{ "<leader>cp", "<cmd>Lspsaga diagnostic_jump_prev<cr>", desc = "Lsp Previous Diagnostic", mode = "n" },
 			{ "<leader>cn", "<cmd>Lspsaga diagnostic_jump_next<cr>", desc = "Lsp Next Diagnostic", mode = "n" },
+
+			-- neogit
+			{ "<leader>gg", "<cmd>Neogit<cr>", desc = "Neogit UI" },
 		})
 	end,
 }
