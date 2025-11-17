@@ -20,7 +20,7 @@ require("lazy").setup({
 	spec = {
 		-- import your plugins
 		{ import = "Amin.plugins" },
-		{ import = "Amin.plugins.lsp" },
+		-- { import = "Amin.plugins.lsp" },
 	},
 
 	ui = {
