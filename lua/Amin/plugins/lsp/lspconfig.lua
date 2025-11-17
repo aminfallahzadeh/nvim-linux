@@ -41,9 +41,12 @@ return {
 		--
 		-- Setup servers
 		-- local lspconfig = require("lspconfig")
-		local cmp_nvim_lsp = require("cmp_nvim_lsp")
-		local capabilities = cmp_nvim_lsp.default_capabilities()
+		-- local cmp_nvim_lsp = require("cmp_nvim_lsp")
+		-- local capabilities = cmp_nvim_lsp.default_capabilities()
+		-- local on_attach = require("Amin.plugins.lsp.lspconfig").on_attach
 		local on_attach = require("Amin.plugins.lsp.lspconfig").on_attach
+		local capabilities = vim.lsp.protocol.make_client_capabilities()
+		capabilities = vim.tbl_deep_extend("force", capabilities, require("blink.cmp").get_lsp_capabilities({}, false))
 
 		-- Config lsp servers here
 		-- =======================================
