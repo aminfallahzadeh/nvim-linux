@@ -2,7 +2,7 @@ return {
 	"neovim/nvim-lspconfig",
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
-		"hrsh7th/cmp-nvim-lsp",
+		-- "hrsh7th/cmp-nvim-lsp",
 		{ "antosha417/nvim-lsp-file-operations", config = true },
 	},
 	config = function()
@@ -44,7 +44,7 @@ return {
 		-- local cmp_nvim_lsp = require("cmp_nvim_lsp")
 		-- local capabilities = cmp_nvim_lsp.default_capabilities()
 		-- local on_attach = require("Amin.plugins.lsp.lspconfig").on_attach
-		local on_attach = require("Amin.plugins.lsp.lspconfig").on_attach
+		-- local on_attach = require("Amin.plugins.lsp.lspconfig").on_attach
 		local capabilities = vim.lsp.protocol.make_client_capabilities()
 		capabilities = vim.tbl_deep_extend("force", capabilities, require("blink.cmp").get_lsp_capabilities({}, false))
 
@@ -96,7 +96,6 @@ return {
 		-- =======================================
 		vim.lsp.config("eslint", {
 			capabilities = capabilities,
-			on_attach = on_attach,
 		})
 		vim.lsp.enable("eslint")
 
@@ -179,7 +178,15 @@ return {
 		-- =======================================
 		-- TS LS
 		-- =======================================
-		vim.lsp.config("ts_ls", {})
+		vim.lsp.config("ts_ls", {
+			capabilities = capabilities,
+			filetypes = {
+				"javascript",
+				"javascriptreact",
+				"typescript",
+				"typescriptreact",
+			},
+		})
 		vim.lsp.enable("ts_ls")
 		-- vim.lsp.config("tsserver", {
 		-- 	capabilities = capabilities,
