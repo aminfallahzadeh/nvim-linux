@@ -8,9 +8,6 @@ return {
 			require("catppuccin").setup({
 				flavour = "mocha",
 				transparent_background = true,
-				integrations = {
-					telescope = { enabled = true },
-				},
 				styles = {
 					comments = { "italic" },
 					conditionals = { "italic" },
@@ -41,12 +38,10 @@ return {
 			hl(0, "NoiceHover", { bg = "none" })
 			hl(0, "NoiceHoverBorder", { bg = "none", fg = "#89b4fa" })
 
-			-- blink.cmp
-			-- hl(0, "BlinkCmpMenu", { bg = "none" })
-			-- hl(0, "BlinkCmpMenuBorder", { bg = "none", fg = "#89b4fa" })
-			-- hl(0, "BlinkCmpSource", { bg = "none" })
-			-- hl(0, "BlinkCmpDocBorder", { bg = "none", fg = "#89b4fa" })
-			-- hl(0, "BlinkCmpDocSeparator", { bg = "none", fg = "#89b4fa" })
+			-- LSP highlight colors
+			-- hl(0, "LspReferenceRead", { bold = true, bg = "NONE", underline = true, sp = "#89b4fa" })
+			-- hl(0, "LspReferenceText", { bold = true, bg = "NONE", underline = true, sp = "#89b4fa" })
+			-- hl(0, "LspReferenceWrite", { bold = true, bg = "NONE", underline = true, sp = "#89b4fa" })
 		end,
 	},
 }

@@ -1,3 +1,12 @@
+-- basic keymaps
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
+vim.keymap.set("n", "<c-k>", ":wincmd k<CR>")
+vim.keymap.set("n", "<c-j>", ":wincmd j<CR>")
+vim.keymap.set("n", "<c-h>", ":wincmd h<CR>")
+vim.keymap.set("n", "<c-l>", ":wincmd l<CR>")
+
 -- disbale banner for nvim file explorer
 vim.cmd("let g:netrw_banner = 0")
 
@@ -58,18 +67,6 @@ vim.opt.cursorline = true -- disable cursorline highlight
 vim.opt.cursorlineopt = "number" -- disable cursorline highlighti
 vim.opt.ruler = true
 vim.opt.background = "dark"
-vim.api.nvim_create_autocmd("User", {
-	pattern = "TelescopeFindPre",
-	callback = function()
-		vim.opt_local.winborder = "none"
-		vim.api.nvim_create_autocmd("WinLeave", {
-			once = true,
-			callback = function()
-				vim.opt_local.winborder = "rounded"
-			end,
-		})
-	end,
-})
 
 -- backspace behaviour
 vim.opt.backspace = { "start", "eol", "indent" }
@@ -100,3 +97,6 @@ vim.api.nvim_set_hl(0, "DiagnosticUnnecessary", {})
 
 -- fix checkhealth
 vim.o.sessionoptions = "buffers,curdir,folds,help,tabpages,winsize,winpos,localoptions"
+
+vim.opt.updatetime = 250
+vim.opt.timeoutlen = 300
