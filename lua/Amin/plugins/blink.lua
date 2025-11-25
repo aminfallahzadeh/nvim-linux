@@ -37,6 +37,7 @@ return {
 					},
 				},
 				completion = {
+					list = { selection = { preselect = false, auto_insert = false } },
 					menu = {
 						scrolloff = 1,
 						scrollbar = false,

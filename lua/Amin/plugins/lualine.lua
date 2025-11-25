@@ -34,26 +34,26 @@ local function buffer_with_diagnostics(bufnr)
 end
 
 -- add total line numbers in normal mode & line and character count in visual mode
--- local latte = require("catppuccin.palettes").get_palette("mocha") -- or "latte", "frappe", "macchiato", "mocha"
+local latte = require("catppuccin.palettes").get_palette("mocha") -- or "latte", "frappe", "macchiato", "mocha"
 
--- vim.api.nvim_set_hl(0, "StatuslineIcon", { fg = latte.mauve, bg = "NONE", bold = true })
--- vim.api.nvim_set_hl(0, "StatuslineText", { fg = latte.flamingo, bg = "NONE" })
---
--- local function lines_info()
--- 	local icon_hl = "%#StatuslineIcon#"
--- 	local text_hl = "%#StatuslineText#"
--- 	local mode = vim.fn.mode()
--- 	if mode:find("[vV]") then
--- 		local _, ls, cs = table.unpack(vim.fn.getpos("v"))
--- 		local _, le, ce = table.unpack(vim.fn.getpos("."))
--- 		local line_count = math.abs(le - ls) + 1
--- 		local col_count = math.abs(ce - cs) + 1
--- 		return string.format("%s󰈛%s %dL %dC", icon_hl, text_hl, line_count, col_count)
--- 	else
--- 		local total_lines = vim.api.nvim_buf_line_count(0)
--- 		return string.format("%s%s %d", icon_hl, text_hl, total_lines)
--- 	end
--- end
+vim.api.nvim_set_hl(0, "StatuslineIcon", { fg = latte.mauve, bg = "NONE", bold = true })
+vim.api.nvim_set_hl(0, "StatuslineText", { fg = latte.flamingo, bg = "NONE" })
+
+local function lines_info()
+	local icon_hl = "%#StatuslineIcon#"
+	local text_hl = "%#StatuslineText#"
+	local mode = vim.fn.mode()
+	if mode:find("[vV]") then
+		local _, ls, cs = table.unpack(vim.fn.getpos("v"))
+		local _, le, ce = table.unpack(vim.fn.getpos("."))
+		local line_count = math.abs(le - ls) + 1
+		local col_count = math.abs(ce - cs) + 1
+		return string.format("%s󰈛%s %dL %dC", icon_hl, text_hl, line_count, col_count)
+	else
+		local total_lines = vim.api.nvim_buf_line_count(0)
+		return string.format("%s%s %d", icon_hl, text_hl, total_lines)
+	end
+end
 
 local function short_filepath()
 	local filepath = vim.fn.expand("%:~:.") -- expand with ~ or relative
@@ -77,13 +77,13 @@ local function setup_macro_refresh(lualine)
 	})
 end
 
-local function macro_recording_status()
-	local function current_status()
-		local register = vim.fn.reg_recording()
-		return register == "" and "" or "RECORDING @" .. register
-	end
-	return { "macro-recording", fmt = current_status }
-end
+-- local function macro_recording_status()
+-- 	local function current_status()
+-- 		local register = vim.fn.reg_recording()
+-- 		return register == "" and "" or "RECORDING @" .. register
+-- 	end
+-- 	return { "macro-recording", fmt = current_status }
+-- end
 
 return {
 	{
@@ -167,26 +167,9 @@ return {
 					},
 
 					lualine_c = {
+						lines_info,
 						-- { "mode", separator = { left = "", right = "" }, right_padding = 2 },
-						macro_recording_status(),
 					},
-					-- lualine_b = {
-					-- 	"filename",
-					-- 	"branch",
-					-- 	"diff",
-					-- 	{
-					-- 		"diagnostics",
-					-- 		symbols = {
-					-- 			error = " ",
-					-- 			warn = " ",
-					-- 			info = " ",
-					-- 			hint = " ",
-					-- 		},
-					-- 	},
-					-- },
-
-					-- lualine_c = { lines_info },
-					-- lualine_c = { "filename" },
 					lualine_x = { "filetype" },
 					lualine_y = {
 						"ctime",
